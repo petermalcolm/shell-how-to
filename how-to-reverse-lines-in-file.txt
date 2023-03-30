@@ -1,0 +1,1 @@
+cat abc.csv | awk '{ f[++i] = $0 } END { while (i) print f[i--] }' > cba.csv

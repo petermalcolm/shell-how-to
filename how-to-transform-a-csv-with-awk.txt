@@ -1,0 +1,14 @@
+# Use the delimiter (-F,)
+# Use variables (pl, pr, q, c) for (left-paren, right-paren, quote, comma) respectively
+
+# Remember, $0 is the entire string
+# $1, $2, $3 ... are the parsed tokens
+
+# sample usage
+tildecommafile CPT_2022_CONTENT_WITH_RVUS/LONGULT.csv| head -n3 | awk -F, -v pl='(' -v pr=')' -v q='"' -v c=',' '{print pl q $1 q c pr}'
+
+
+# sample output
+("A",)
+("",)
+("",)

@@ -1,0 +1,19 @@
+paste /tmp/pasty1.txt /tmp/pasty2.txt | awk -F$'\t' -v sep=" > " '{print $2 sep $1;}'
+1 > A
+2 > B
+3 > C
+
+# given files:
+
+ /tmp/pasty1.txt 
+A
+B
+C
+
+ /tmp/pasty2.txt 
+1
+2
+3
+
+# NOTE: use -F$'\t'
+#       to separate in awk using tabs

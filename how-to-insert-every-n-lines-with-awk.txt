@@ -1,0 +1,3 @@
+# Insert "REPLACEME" after every 3rd line
+
+awk '{print;} NR % 3 == 0 {print "REPLACEME";}' /tmp/every.txt

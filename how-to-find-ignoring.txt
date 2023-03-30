@@ -1,0 +1,1 @@
+find . ! -path './.git/*' ! -path './vendor/*' ! -path '*/node_modules/*'
