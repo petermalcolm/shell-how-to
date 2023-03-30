@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+function tildecommafile {
+  rows=$(cat $1)
+  for row in $rows; do { echo -n $row | awk -F'"' -v OFS='' '{ for (i=2; i<=NF; i+=2) gsub(",", "~", $i) } 1' }; done
+}
+
+# Explanation:
+# Safely removes quotes and commas from a CSV file
+# Use with `cut`, `column` and other tools that split on commas
+
+# INPUT file:
+# =============
+# one,two,three
+# bob,joe,"has, commas"
+# "co,mma",x,y 
+
+# OUTPUT file:
+# =============
+# one,two,three
+# bob,joe,has~ commas
+# co~mma,x,y
+ 
