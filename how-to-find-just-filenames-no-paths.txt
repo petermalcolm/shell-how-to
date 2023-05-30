@@ -1,0 +1,2 @@
+# This finds recursively, but does not print full paths
+find /tmp/somedir -type f -execdir echo {} ';'
