@@ -1,0 +1,52 @@
+awk 'FNR==NR{a[$1]=$2;next}{$1=a[$1]}1' _LUT.txt SUBME.txt
+
+################################
+
+# WHERE _LUT.txt looks like this:
+Profile update_profile
+Questions questions
+License License
+ProfessionalResponsibilitySuit PRSuit
+PeerReview peerreview
+ . . .
+
+# AND SUBME.txt could look like this
+Profile
+Questions
+License
+ProfessionalResponsibilitySuit
+Revocation
+Statement
+ . . .
+
+# AND the result looks like this
+update_profile
+questions
+License
+PRSuit
+ . . .
+
+==========
+CREDIT TO: https://stackoverflow.com/a/65022571/1489051
+
+    awk 'FNR==NR{a[$1]=$2;next}{$1=a[$1]}1' lookup.txt file1
+
+Explanation:
+
+# true as long as we are reading the first file, lookup.txt
+FNR==NR {
+    # create a lookup array 'a' indexed by field 1 of lookup txt
+    a[$1]=$2
+    # don't process further actions
+    next
+}
+
+# because of the 'next' statement above, this will be only executed
+# when we are processing the second file, file1
+{
+    # translate field 1. use the value from the lookup array
+    $1=a[$1]
+}
+
+# always true. print the line
+1
