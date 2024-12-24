@@ -1,0 +1,5 @@
+awk -F\' 'NF>1 && NF%2==0 { print NR;;}' file.txt
+
+# OR 
+
+awk -F\" 'NF>1 && NF%2==0 { print NR;;}' file.txt

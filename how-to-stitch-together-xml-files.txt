@@ -1,0 +1,27 @@
+steps to xml-ify files 0 - n:
+
+NOTE: Because of BSD sed (on Mac) this creates a lot of *.orig-X files. The '.orig-X' is not needed on Linux
+
+
+for files 1 -> n : # skip the first
+
+  sed -i'.orig-0' '1d' $FILENAME # strip the first line: `<?xml version="1.0" encoding="UTF-8"?>`
+
+  sed -i'.orig-1' 's~[^>]*>~~' $FILENAME # remove initial 'Members' tag
+
+  # confirm with
+  head -c 400 $FILENAME
+
+
+for files 0 -> (n - 1) : # skip the last
+
+  sed -i'.orig-2' 's~</Members>~~' $FILENAME # remove final 'Members' tag
+
+  # confirm with
+  tail -c 60 $FILENAME
+
+
+finally:
+
+  cat $FILE0 $FILE1 $FILE2 ... $FILEN > $RESULT
+

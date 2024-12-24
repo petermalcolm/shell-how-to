@@ -1,0 +1,21 @@
+# Example 1:
+
+ find DRMS -type f -name "*.md" -print0 | xargs -0 sed -i '' -e 's#/images/cuc/CUC_Chart#/wp-content/uploads/cuc/CUC_Chart#g'
+
+# Example 2:
+
+ find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/foo/bar/g'
+
+
+# From https://superuser.com/questions/428493/how-can-i-do-a-recursive-find-and-replace-from-the-command-line
+# Here's how it works:
+#
+# 1.   find . -type f -name '*.txt' finds, in the current directory (.) and below, all regular files (-type f) whose names end in .txt
+#
+# 2.   | passes the output of that command (a list of filenames) to the next command
+#
+# 3.   xargs gathers up those filenames and hands them one by one to sed
+#
+# 4.   sed -i '' -e 's/foo/bar/g' means "edit the file in place, without a backup, and make the following substitution (s/foo/bar) multiple times per line (/g)" (see man sed)
+#
+# Note that the 'without a backup' part in line 4 is OK for me, because the files I'm changing are under version control anyway, so I can easily undo if there was a mistake.

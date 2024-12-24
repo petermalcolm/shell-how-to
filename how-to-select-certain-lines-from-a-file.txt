@@ -1,0 +1,21 @@
+# sed -n 'start[,end] p' file
+
+% cat /tmp/test.txt 
+"1indexed","bar","bing"
+"22222","0","0"
+"33333","1","2"
+"44444","0","1"
+"55555","0","2"
+"66666","1","0"
+
+% sed -n '1 p' /tmp/test.txt  
+"1indexed","bar","bing"
+
+% sed -n '2 p' /tmp/test.txt
+"22222","0","0"
+
+% sed -n '3,5 p' /tmp/test.txt
+"33333","1","2"
+"44444","0","1"
+"55555","0","2"
+

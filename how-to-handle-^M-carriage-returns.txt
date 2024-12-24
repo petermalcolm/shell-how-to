@@ -1,0 +1,7 @@
+^M # <-- not the actual carriage return
+Type: ctrl-v ctrl-m
+
+NOTES: Ctrl-V tells vi that the next character typed should be inserted literally and ctrl-m is the keystroke for a carriage return.
+
+FROM: https://stackoverflow.com/questions/1585449/insert-the-carriage-return-character-in-vim
+
