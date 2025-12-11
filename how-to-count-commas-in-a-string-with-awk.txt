@@ -1,0 +1,3 @@
+awk -F, '{ print NF - 1 }' <(echo "my,string,with,commas")
+
+# Result: 3

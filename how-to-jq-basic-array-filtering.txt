@@ -1,0 +1,3 @@
+jq '.["stages"]' < .gocd/build.json           #### <-- finds the member of the global object: `{ "name": "BIG-OBJ", "stages": [ { "name": ... `
+jq '.stages[].name'                           #### <-- finds the "name" element of each "stage" object: `{ "name": "BIG-OBJ", "stages": [ { "name": "stage1" ... `
+jq '.stages[] | select(.name == "stage42")'   #### <-- finds a specific "stage" object, based on its name element 

@@ -1,0 +1,15 @@
+# The key is `grep -zo`
+# Stack Overflow: https://stackoverflow.com/a/7167115/1489051
+# -z Treat the input as a set of lines, each terminated by a zero byte (the ASCII NUL character) instead of a newline.
+#    That is, grep knows where the ends of the lines are, but sees the input as one big line. 
+#    Beware this also adds a trailing NUL char if used with -o, see comments.
+#
+# -o print only matching. Because we're using -z, the whole file is like a single big line, 
+#    so if there is a match, the entire file would be printed; this way it won't do that.
+
+> cat file.txt | grep -zo 'firstline\s*secondline'
+
+# Use Case: empty XML element and where to find it:
+
+> cat -n ABUIDS_10007-10036_ABMSExport-2025-02-21--EMPTIES-PRETTY.xml| grep -zo '<CertificateInfo>\s*\d\+\s*</CertificateInfo>' | grep '\d'        
+  1870	      </CertificateInfo>

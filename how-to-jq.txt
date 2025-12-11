@@ -1,0 +1,29 @@
+JQ syntax:
+
+For JSON like this:
+        {
+            "crid": "2733265",
+            "nid": {
+                "uri": "https://example.org/node/42056",
+                "id": "42056",
+                "resource": "node",
+                "uuid": "c355efa8-bde7-4b89-93b3-fad8b16de304"
+            },
+            "uid": {
+                "uri": "https://example.org/user/35877",
+                "id": "35877",
+                "resource": "user",
+                "uuid": "32c99800-593c-4e22-b29f-d85562115818"
+            },
+            "date_completed": "1739562088",
+            . . . 
+
+use JQ like this:
+jq '.list[] | "\(.crid) N: \(.nid.id) U: \(.uid.id)"'
+
+that will result in this:
+"2733265 N: 42056 U: 35877"
+"2772767 N: 41113 U: 1030"
+"2772697 N: 39897 U: 11860"
+"2767089 N: 41889 U: 3776"
+. . . 

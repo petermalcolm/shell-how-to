@@ -1,0 +1,34 @@
+# query by converting to JSON first
+```zsh
+xq -j ./ABUIDS_00001-1000000000_ABMSExport-2025-12-11--AFTER.xml | jq '.Members.Member[] | select(.. | .CertificateIssuanceStatus? == "Inactive")' \
+| grep -A1 Unique | grep text | uniq | less
+```
+
+# That 'select(..' is powerful
+
+  ✔ select(.)
+    Keeps the value if that value itself is truthy.
+
+  ✔ select(.foo == "x")
+    Keeps the value if it has .foo == "x".
+
+  ✔ select(.. | .foo == "x")
+    Uses recursive descent, checking all possible sub-values for .foo == "x"
+
+## Note, our standard XML file starts like this:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Members xmlns="http://ns.medbiq.org/member/v2/" xmlns:a="http://ns.medbiq.org/address/v2/" xmlns:n="http://ns.medbiq.org/name/v2/">
+  <Member restrictions="Unrestricted">
+    ...
+```
+
+## Note, the subsequent `| grep -A1 Unique | grep text` is handy.
+   Each diplomate has a UniqueID with a #text attribute of their ABUID:
+```xml
+  <Member restrictions="Unrestricted">
+    <UniqueID domain="idd:ABMS.org:ABMSUniqueID">2</UniqueID>
+    <UniqueID domain="idd:ABU.org:BoardUniqueID">1</UniqueID>
+```
+   The ABUID is the BoardUniqueID
+
