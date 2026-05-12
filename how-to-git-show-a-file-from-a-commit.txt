@@ -1,0 +1,4 @@
+git show abc123:my/file.txt
+
+# Locally, it can be
+git show `gitmymainancestor`:my/file.txt

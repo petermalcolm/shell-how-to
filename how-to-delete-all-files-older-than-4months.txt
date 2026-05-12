@@ -1,0 +1,11 @@
+```sh
+find /path/to/dir -type f -mtime +120 -delete
+```
+
+Or to see files first:
+
+```sh
+find /path/to/dir -type f -mtime +120 -ls
+```
+
+(120 days ≈ 4 months)

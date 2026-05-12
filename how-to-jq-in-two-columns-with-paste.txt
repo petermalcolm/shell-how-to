@@ -1,0 +1,22 @@
+$ paste \
+  <(jq -r '.["data-initial-items"][]' $FILE | while read l; do echo ${(r:80:)l}; done) \
+  <(jq -r '.["data-prior-sub-item-responses"][]' $FILE) \
+  | less
+
+## Start with `paste ...`
+$ paste <() <()
+
+## Fill each of those <() <() parens with `jq ...`
+$ jq -r '.["data-initial-items"][]' $FILE
+
+## Finally, create a loop that uses (r:80:)
+$ while read l; do echo ${(r:80:)l}; done
+#                            ^^ 80 is the column width
+
+## NOTE: This example uses JSON in $FILE:
+```json
+{
+"data-initial-items":[ ...
+"data-prior-sub-item-responses":[ ...
+}
+```

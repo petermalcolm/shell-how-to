@@ -1,0 +1,5 @@
+# Source - https://stackoverflow.com/a/39943727
+# Posted by Mr_and_Mrs_D, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-02-12, License - CC BY-SA 4.0
+
+git diff -- . ':(exclude)db/irrelevant.php' ':(exclude)db/irrelevant2.php'

@@ -1,0 +1,8 @@
+1. Visual block mode: `Ctrl+v`
+2. Select lines: `j` (down) or `k` (up)
+3. Delete comment char: `x`
+
+Or for multiple chars (like `//`):
+1. `Ctrl+v`
+2. Select lines
+3. `d` then number of chars (e.g., `2x` for `//`)

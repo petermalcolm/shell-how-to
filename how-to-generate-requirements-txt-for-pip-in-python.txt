@@ -1,0 +1,3 @@
+# Be careful. This causes nothing but encoding issues, in my experience so far :-(
+pip install pipreqs
+pipreqs . --force

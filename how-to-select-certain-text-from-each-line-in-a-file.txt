@@ -1,0 +1,7 @@
+# For example "FOO_FELLOWSHIPS and "BAR_FELLOWSHIPS etc, from ddl.txt
+> cat ddl.txt | sed -nE 's#.*(\"[A-Z]+_FELLOWSHIPS).*#\1#p'
+
+# Notes:
+# The -n suppresses default output, and p prints only matches. This extracts just the matching part.
+# The -E means extended regex -- fewer backslashes, and `+` works
+

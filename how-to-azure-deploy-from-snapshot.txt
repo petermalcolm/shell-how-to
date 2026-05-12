@@ -1,0 +1,29 @@
+# Retrieve the Snapshot Details: First, get the snapshot ID by retrieving the snapshot details.
+
+   az snapshot show \
+      --name drms_demo_snap \
+      --resource-group drms_demo_rg
+   
+# Create a Managed Disk from the Snapshot: Use the snapshot ID to create a managed disk.
+# Replace <diskName> with your desired disk name and <snapshotId> with the ID obtained from the previous step.
+# NOTE:  --size-gb -z                                  : Size in GB. Max size: 4095 GB
+
+   az disk create \
+      --name <diskName> \
+      --resource-group drms_demo_rg \
+      --source <snapshotId>
+   
+# Create a Virtual Machine Using the Managed Disk: Finally, create a new VM using the managed disk.
+# Valid strings for the osType parameter when creating a VM from a snapshot in Azure are "Windows" and "Linux".
+# NOTE: --size                       : The VM size to be created. 
+#                                      See https://azure.microsoft.com/pricing/details/virtual-machines/
+#                                      for size info. Default: Standard_DS1_v2. Values from: az vm list-sizes.
+#       WARNING: The default value of '--size' will be changed to 'Standard_D2s_v5' from
+#       'Standard_DS1_v2' in a future release.
+
+   az vm create \
+      --resource-group drms_demo_rg \
+      --name <vmName> \
+      --attach-os-disk <diskName> \
+      --os-type <osType>
+   

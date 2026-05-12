@@ -1,0 +1,10 @@
+# Redirect stdout and stderr to the same file:
+command &> file.txt
+# OR
+command > file.txt 2>&1
+
+# Details:
+# `2>&1` means "redirect stderr (2) to the same place as stdout (1)".
+# The `&` tells the shell that `1` refers to file descriptor 1 (stdout), not a file named "1".
+# So: stdout goes to `file.txt`, then stderr is redirected to wherever stdout is going (also `file.txt`).
+# `&>` is just shorthand for the same thing.

@@ -1,0 +1,5 @@
+# count the spaces
+grep -c "^[[:space:]]*$" $FILE
+
+# remove the spaces
+sed '#^[[:space:]]*$#d' $FILE > $CLEANED_FILE
