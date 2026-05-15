@@ -2,3 +2,5 @@ git show abc123:my/file.txt
 
 # Locally, it can be
 git show `gitmymainancestor`:my/file.txt
+# where
+alias gitmymainancestor="git merge-base HEAD main"
