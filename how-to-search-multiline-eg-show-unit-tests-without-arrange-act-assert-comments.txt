@@ -1,0 +1,2 @@
+# Find all tests, then convert to a single line, collapse out lines with comments, multi-line again, exclude '#'
+git grep -E 'def test_|arrange|#[[:space:]]*act[[:space:]]*$|#[[:space:]]*assert' app/tests/ | tr '\n' '~' | sed 's/~[a-z_\/]*\.py:[[:space:]]*#/ #/g' | tr '~' '\n' | grep -v '#' | less
