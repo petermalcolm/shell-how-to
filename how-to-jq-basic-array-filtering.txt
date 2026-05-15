@@ -1,3 +1,28 @@
-jq '.["stages"]' < .gocd/build.json           #### <-- finds the member of the global object: `{ "name": "BIG-OBJ", "stages": [ { "name": ... `
+jq '.["stages"]' < /tmp/my-json.json          #### <-- finds the "stages" member of the global object: `{ "name": "BIG-OBJ", "stages": [ { "name": ... `
 jq '.stages[].name'                           #### <-- finds the "name" element of each "stage" object: `{ "name": "BIG-OBJ", "stages": [ { "name": "stage1" ... `
 jq '.stages[] | select(.name == "stage42")'   #### <-- finds a specific "stage" object, based on its name element 
+
+# Here is JSON to test with:
+echo '{ "name": "BIG-OBJ", "stages": [ { "name": "stage1", "reason": "gotta-start" }, { "name": "stage2", "reason": "gotta-continue"}, { "name": "stage42", "reason": "life-universe-everything" } ] }' > /tmp/my-json.json
+
+# Pretty-print with JQ:
+
+cat /tmp/my-json.json | jq '.'
+{
+  "name": "BIG-OBJ",
+  "stages": [
+    {
+      "name": "stage1",
+      "reason": "gotta-start"
+    },
+    {
+      "name": "stage2",
+      "reason": "gotta-continue"
+    },
+    {
+      "name": "stage42",
+      "reason": "life-universe-everything"
+    }
+  ]
+}
+
