@@ -46,7 +46,7 @@ b
 c
 ```
 
-You can type: `man tr` for details, but in a nutshell, you "translated" each comma (`,`) to a newline (`\n`)
+You can type: `man tr` for details (⚠️  and press `q` to get out of that), but in a nutshell, you "translated" each comma (`,`) to a newline (`\n`)
 
 ## Sorting and Simplifying
 
