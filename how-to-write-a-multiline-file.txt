@@ -1,0 +1,16 @@
+cat << EOF > filename.txt
+This is the first line.
+This is the second line.
+EOF
+
+# Notice the `heredoc>` prefix that shows up in zsh:
+heredoc> This is the first line.
+heredoc> This is second line.
+heredoc> EOF
+
+# The ending string is arbitrary:
+cat << THISISTHEENDMYFRIEND > /tmp/my-other-multiline.txt
+heredoc> This is the other first.
+heredoc> This is the other second.
+heredoc> THISISTHEENDMYFRIEND
+
