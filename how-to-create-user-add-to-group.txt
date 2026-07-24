@@ -1,0 +1,8 @@
+
+su           # <-- become root
+adduser filesync
+groups filesync                  # <-- BEFORE: filesync : filesync
+
+usermod -aG www-data filesync
+usermod -aG sudo filesync        # <-- (give sudo privileges)
+groups filesync                  # <--  AFTER: filesync : filesync www-data sudo

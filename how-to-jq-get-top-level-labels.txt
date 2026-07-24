@@ -1,0 +1,44 @@
+jq 'map_values(keys)' file.json           # <-- TWO-LEVEL SYNTAX
+
+# For JSON that looks like this:
+{
+  "CUC": {
+    "update_profile": {
+      "date": "2024-04-01 00:00:00.000000",
+      "timezone_type": 3,
+      "timezone": "America/New_York"
+    }
+  },
+  "CUCA1": {
+    "confirmation": {
+      "date": "2024-05-01 00:00:00.000000",
+      "timezone_type": 3,
+      "timezone": "America/New_York"
+    },
+
+# get the top two levels of nesting as a new JSON:
+
+{
+  "CUC": [ "update_profile" ]
+  },
+  "CUCA1": [ confirmation", ... ]
+
+###################################
+# Or, for *just* the very top keys:
+
+jq 'keys' file.json                    # <-- ONE-LEVEL SYNTAX
+[
+  "CUC",
+  "CUCA1",
+  "CUCA2",
+
+#################################
+# Or, to map down one more level:
+
+jq 'map_values(map_values(keys))' file.json    # <-- THREE SYNTAX
+{
+  "CUC": {
+    "update_profile": [ "date", "timezone_type", "timezone":]
+  },
+  "CUCA1": {
+    "confirmation": [ "date", "timezone_type", "timezone":]
