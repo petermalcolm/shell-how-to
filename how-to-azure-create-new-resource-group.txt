@@ -1,0 +1,7 @@
+az group create \
+  --name <RESOURCE_GROUP_NAME> \
+  --location eastus
+
+# Optionally add --subscription <ID_OR_NAME> 
+# if you want it in a different subscription 
+# from your current context.

@@ -1,0 +1,21 @@
+jq 'to_entries | map(.key as $k | .value[] | {key: ., value: $k}) | group_by(.key) | map({key: .[0].key, value: [.[].value] | sort}) | from_entries'
+
+# What this does:
+Take a JSON string like this:
+```json
+{
+  "FOO": ["b"],
+  "BAR": ["b","a","c"],
+  "ZAG": ["b"],
+  "POP": ["c","b"]
+}
+```
+and turn it into a list like this:
+```json
+{
+  "a": ["BAR"],
+  "b": ["BAR","FOO","POP","ZAG"],
+  "c": ["BAR","POP"]
+}
+```
+

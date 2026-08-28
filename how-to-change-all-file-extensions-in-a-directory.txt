@@ -1,0 +1,7 @@
+# Rename .sql to .sql.txt:
+
+for f in *.sql; do mv "$f" "$f.txt"; done
+
+# Reverse (remove .txt):
+
+for f in *.sql.txt; do mv "$f" "${f%.txt}"; done
