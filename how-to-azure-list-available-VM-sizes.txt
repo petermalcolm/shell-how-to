@@ -1,0 +1,4 @@
+az vm list-skus \
+  --location eastus \
+  --resource-type virtualMachines \
+  --output table
