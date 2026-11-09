@@ -1,0 +1,2 @@
+# Works for `git diff` and `git show`
+git show 9b54519 --color=always | less -R
