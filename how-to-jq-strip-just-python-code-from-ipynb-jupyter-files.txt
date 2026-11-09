@@ -1,0 +1,4 @@
+# Because Jupyter notebooks carry all kinds of extra, sometimes sensitive, info:
+
+jq '.cells[] | select(.cell_type == "code") | .source' my-file.ipynb
+
